@@ -1,0 +1,13 @@
+{
+  "name": "b_danmu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "packager": "electron-packager ./ danmuji --electron-version 4.0.5 --overwrite"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
