@@ -5,7 +5,7 @@ function createWindow () {
   let win = new BrowserWindow({ width: 1330, height: 940 , resizable: false});
 
   // 然后加载 app 的 index.html.
-  win.loadFile('index.html');
+  win.loadFile('app/index.html');
 }
 
 app.on('ready', createWindow);

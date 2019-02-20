@@ -1,27 +1,20 @@
-//简易AJAX
-function getRequest(url) {
-  let xmlhttp=new XMLHttpRequest();
-  xmlhttp.open('GET',url,false);
-  xmlhttp.send();
-  return xmlhttp;
-}
+let danmuArr=[];
+let tempDanmuArr=[];  //防止重复弹幕，存到另一个变量里
 
-//弹幕数据获取
-function getDanmuXml(id) {
-  let cid=JSON.parse(getRequest('https://www.bilibili.com/widget/getPageList?aid='+id).responseText)[0].cid;
-  xmlDoc=getRequest('https://api.bilibili.com/x/v1/dm/list.so?oid='+ cid +'&type=1').responseXML;
-  
-  return Array.prototype.map.call(xmlDoc.querySelectorAll('d'),function(item) {
-    let temp=item.attributes[0].nodeValue.split(',');
-    return {
-      time: Number(temp[0]),
-      mode: temp[1]==='4'?temp[1]==='5'?1:2:0,
-      color: Number(temp[3]).toString(16),
-      text: item.textContent
-    };
-  });
-}
-let danmuArr=getDanmuXml(JSON.parse(getRequest('https://www.b0110.com/danmuji/data.json').responseText).id);
+//默认资源获取
+axios({
+  method: 'get',
+  url: 'https://www.b0110.com/danmuji/data.json',
+  headers: {
+    'Cache-Control':'no-cache'
+  }
+}).then(function(res) {
+  videoParse(res.data.url,video);
+  return getDanmu(res.data.id);
+}).then(function(danmu) {
+  danmuArr=danmu;
+  tempDanmuArr=[...danmuArr];
+})
 
 //单击双击
 let clickTimer=null;
@@ -157,7 +150,6 @@ function bottomPush(danmu) {
 
 //弹幕推送开始
 let playTimer=null;
-let tempDanmuArr=[...danmuArr];  //防止重复弹幕，存到另一个变量里
 
 function danmuPushBegin() {
   playTimer=setInterval(function() {
@@ -208,7 +200,7 @@ window['file-select'].addEventListener('change',function(e) {
   window['video-url'].value=url;
 });
 sure.addEventListener('click',function() {
-  video.src=window['video-url'].value;
+  videoParse(window['video-url'].value,video);
   tempDanmuArr=[...danmuArr];
   danmuClear();
 });
@@ -217,7 +209,9 @@ sure.addEventListener('click',function() {
 window['danmu-clear'].addEventListener('click',danmuClear);
 
 window['danmu-load'].addEventListener('click',function() {
-  danmuArr=getDanmuXml(window['danmu-av'].value);
-  tempDanmuArr=[...danmuArr];
+  getDanmu(window['danmu-av'].value).then(function(danmu) {
+    danmuArr=danmu;
+    tempDanmuArr=[...danmuArr];
+  });
   danmuClear();
 });

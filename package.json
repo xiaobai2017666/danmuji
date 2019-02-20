@@ -1,13 +1,16 @@
 {
   "name": "b_danmu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "packager": "electron-packager ./ danmuji --electron-version 4.0.5 --overwrite"
+    "packager": "electron-packager ./ 穷人的弹幕姬 --electron-version 4.0.5 --overwrite --icon=favicon.ico"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.18.0",
+    "hls.js": "^0.12.2"
+  }
 }
