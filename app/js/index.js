@@ -51,16 +51,10 @@ let flag=false; //默认不全屏
 document.addEventListener("webkitfullscreenchange", function() {
   flag=!flag;
   if(flag) {
-    window['danmu-right'].style='width: '+window.screen.availWidth+'px;height: '+720*wd+'px';
-    window['danmu-top'].style='width: '+window.screen.availWidth+'px;height: '+720*wd+'px';
-    window['danmu-bottom'].style='width: '+window.screen.availWidth+'px;height: '+720*wd+'px';
     Array.prototype.forEach.call(danmuLines,function(item) {
       item.style.height=29*wd+'px';
     });
   }else {
-    window['danmu-right'].style='width: 1280px;height: 720px';
-    window['danmu-top'].style='width: 1280px;height: 720px';
-    window['danmu-bottom'].style='width: 1280px;height: 720px';
     Array.prototype.forEach.call(danmuLines,function(item) {
       item.style.height='29px';
     });
@@ -68,9 +62,9 @@ document.addEventListener("webkitfullscreenchange", function() {
 });
 
 //弹道队列状态初始化
-let rightList=Array(24).fill(true);
-let topList=Array(24).fill(true);
-let bottomList=Array(24).fill(true);
+let rightList=Array(21).fill(true);
+let topList=Array(21).fill(true);
+let bottomList=Array(21).fill(true);
 
 //滑动弹幕推送
 let danmuRightList=document.querySelectorAll('#danmu-right .danmu-line');
@@ -157,7 +151,7 @@ function danmuPushBegin() {
     tempDanmuArr.forEach(function(item,index) {
       if(time-item.time<0.1&&time-item.time>0) {
         if(item.mode===0) rightPush(item);
-        if(item.mode===1) topPush(item);
+        if(item.mode===1) bottomPush(item);
         if(item.mode===2) topPush(item);
         tempDanmuArr.splice(index, 1);
       }
@@ -179,8 +173,13 @@ video.addEventListener('pause',function() {
   })
 });
 
+//视频进度跳转事件
+video.addEventListener('seeked',function() {
+  danmuClear();
+  tempDanmuArr=[...danmuArr];
+})
 
-// 其他
+//弹幕清除
 function danmuClear() {
   Array.prototype.forEach.call(document.querySelectorAll('.danmu-item'),function(item) {
     item.remove();
@@ -191,6 +190,7 @@ function danmuClear() {
   bottomList=Array(24).fill(true);
 }
 
+// 视频、弹幕控制面板
 window['file-select-btn'].addEventListener('click',function() {
   window['file-select'].click();
 });
@@ -215,3 +215,5 @@ window['danmu-load'].addEventListener('click',function() {
   });
   danmuClear();
 });
+
+console.log(video.controlsList);

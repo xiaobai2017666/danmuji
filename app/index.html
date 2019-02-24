@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/index.css">
-    <title>穷人的弹幕姬v1.1 by Weismann</title>
+    <title>穷人的弹幕姬v1.3 by Weismann</title>
 </head>
 <body>
     <div id='container'>
-        <video id='video'></video>
+        <video id='video' controls controlsList='nodownload'></video>
         <div id='danmu-right'>
-            <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
             <div class='danmu-line'></div>
             <div class='danmu-line'></div>
             <div class='danmu-line'></div>
@@ -60,14 +57,8 @@
             <div class='danmu-line'></div>
             <div class='danmu-line'></div>
             <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
         </div>
         <div id='danmu-bottom'>
-            <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
-            <div class='danmu-line'></div>
             <div class='danmu-line'></div>
             <div class='danmu-line'></div>
             <div class='danmu-line'></div>
@@ -94,6 +85,10 @@
     </div>
 
     <div id='controls'>
+        <div id='progress'>
+            <div id='progress-btn'></div>
+        </div>
+
         <div id='p1'>注意：1.单击视频进行播放/暂停；双击全屏。2.若不进行配置，则进行默认视频服务。</div>
 
         <div>

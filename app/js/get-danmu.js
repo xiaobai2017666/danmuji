@@ -23,9 +23,14 @@ async function getDanmu(id) {
   
   return Array.prototype.map.call(xml.querySelectorAll('d'),function(item) {
     let temp=item.attributes[0].nodeValue.split(',');
+    if(temp[1]==='4'||temp[1]==='5') {
+      temp[1]=temp[1]==='4'?1:2;
+    }else {
+      temp[1]=0;
+    }
     return {
       time: Number(temp[0]),  //出现时间
-      mode: temp[1]==='4'?temp[1]==='5'?1:2:0,  //弹幕展现形式
+      mode: temp[1],  //弹幕展现形式
       color: Number(temp[3]).toString(16),  //弹幕颜色
       text: item.textContent  //弹幕内容
     };
