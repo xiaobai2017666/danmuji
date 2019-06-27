@@ -1,6 +1,10 @@
 # 弹幕姬
 **穷人的实时弹幕工具**
 
+软件预览：
+
+![](<https://xiaobai2017666.github.io/images/danmuji/preview.png>)
+
 整体使用electron+vue框架
 
 更新记录：
