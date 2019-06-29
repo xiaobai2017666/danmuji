@@ -3,7 +3,7 @@
 
 软件预览：
 
-![](<https://xiaobai2017666.github.io/images/danmuji/preview.png>)
+![预览图](<https://xiaobai2017666.github.io/images/danmuji/preview.png>)
 
 整体使用electron+vue框架
 
@@ -17,7 +17,7 @@
   3. 临时修复顶部弹幕和底部弹幕不生效的问题
 - 2019/6/27更新：
   1. 整体框架改变，采用webpack打包渲染进程文件
-  2. 播放器使用了dplayer，但是修改了弹幕API的源码并编译好在lib文件夹下
+  2. 播放器使用了dplayer，但是修改了弹幕API的源码并编译好在lib文件夹下，修改后的源代码在[这里](https://github.com/xiaobai2017666/DPlayer)
   3. 美化了UI
 
 使用：
