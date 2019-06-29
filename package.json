@@ -1,15 +1,15 @@
 {
   "name": "b_danmu",
-  "version": "1.0.1",
+  "version": "1.4.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "packager": "electron-packager ./ 弹幕姬 --electron-version 4.0.5 --overwrite --icon=favicon.ico",
-    "webpacker": "webpack --config webpack.config.js",
+    "packager": "electron-packager ./ 弹幕姬 --electron-version 4.0.5 --arch=x64 --platform=win32 --overwrite --icon=favicon.ico --ignore=node_modules --ignore=src --ignore=.gitignore --ignore=package-lock.json --ignore=README.md --ignore=webpack.config.js",
+    "webpacker": "webpack --config webpack.config.js)",
     "dev": "webpack-dev-server"
   },
-  "author": "",
+  "author": "Weismann",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.1",
