@@ -30,7 +30,10 @@ export default {
         let that=this;
 
         axios({
-            url: 'https://xiaobai2017666.github.io/videos/'
+            url: 'https://xiaobai2017666.github.io/videos/',
+            headers: {
+                'Cache-Control':'no-cache'
+            }
         }).then(function(res) {
             that.videoList=res.data.list;
         })
