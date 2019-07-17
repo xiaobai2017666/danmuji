@@ -19,9 +19,10 @@
   1. 整体框架改变，采用webpack打包渲染进程文件
   2. 播放器使用了dplayer，但是修改了弹幕API的源码并编译好在lib文件夹下，修改后的源代码在[这里](https://github.com/xiaobai2017666/DPlayer)
   3. 美化了UI
+- 2019/7/17更新：
+  1. 项目配置更新，入口根据不同环境设置配置不同
+  2. 优化UI交互
 
-使用：
-
-1. 修改main.js中的"url"为"http://localhost:9999/"，修改"loadFile"为"loadURL"
-2. 通过"npm run dev"启动webpack-dev-server
-3. “npm start”启动软件
+使用说明：
+1. 启动web，"npm run dev:web"
+2. 启动electron，"npm run dev:electron"
