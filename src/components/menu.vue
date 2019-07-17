@@ -25,12 +25,10 @@ export default {
     methods: {
         slideup() {
             if(this.slideFlag) {
-                // this.$refs.menu.style='animation: 0.5s menuMarginClose forwards';
-                this.$refs['menu-container'].style='animation: 0.5s menuCSlideClose forwards';
+                this.$refs['menu-container'].style='visibility:hidden;animation: 0.5s menuCSlideClose forwards';
                 this.slideFlag=false;
             }else {
-                // this.$refs.menu.style='animation: 0.5s menuMarginOpen forwards';
-                this.$refs['menu-container'].style='animation: 0.5s menuCSlideOpen forwards';
+                this.$refs['menu-container'].style='visibility:visible;animation: 0.5s menuCSlideOpen forwards';
                 this.slideFlag=true;
             }
         }

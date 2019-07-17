@@ -6,9 +6,8 @@ let childWindow;
 let url;
 if(process.env.NODE_ENV === 'development') {
   url='http://localhost:9999/';
-}
-if(process.env.NODE_ENV === 'production') {
-  url=`file://${__dirname}/dist/`;
+}else {
+  url='./dist/';
 }
 let main=url+'index.html';
 let add=url+'add.html';
@@ -21,11 +20,13 @@ function createWindow () {
     resizable: true,  //可变大小
     frame: false,  //菜单与边框显示
     center: true,  //初始位置居中
-    // transparent: true,
     webPreferences: {
       backgroundThrottling: false, // 当页面被置于非激活窗口的时候是否停止动画和计时器
       nodeIntegration: true,
-      webSecurity: false //禁用同源策略
+      webSecurity: false, //禁用同源策略
+      defaultFontFamily:{
+       standard:"Microsoft YaHei",
+      }
     }
   });
 
@@ -36,14 +37,22 @@ function createWindow () {
     frame: false,
     center: true,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      defaultFontFamily:{
+        standard:"Microsoft YaHei",
+      }
     }
   });
   childWindow.hide();
 
   // 然后加载 app 的 index.html.
-  mainWindow.loadURL(main);
-  childWindow.loadURL(add);
+  if(process.env.NODE_ENV === 'development') {
+    mainWindow.loadURL(main);
+    childWindow.loadURL(add);
+  }else {
+    mainWindow.loadFile(main);
+    childWindow.loadFile(add);
+  }
 
   mainWindow.on('close', e=> app.quit());
   //主进程和渲染进程通信事件

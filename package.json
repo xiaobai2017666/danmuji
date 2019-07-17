@@ -2,20 +2,28 @@
   "name": "b_danmu",
   "version": "1.4.1",
   "description": "",
+  "homepage": "https://github.com/xiaobai2017666/danmuji",
+  "bugs": {
+    "url": "https://github.com/xiaobai2017666/danmuji/issues",
+    "email": "1563511027@qq.com"
+  },
   "main": "main.js",
+  "private": true,
   "scripts": {
     "dev:electron": "cross-env NODE_ENV=development electron .",
     "build:electron": "cross-env NODE_ENV=production electron-packager . 弹幕姬 --electron-version 4.0.5 --arch=x64 --platform=win32 --overwrite --icon=favicon.ico --ignore=node_modules --ignore=src --ignore=.gitignore --ignore=package-lock.json --ignore=README.md --ignore=webpack.config.js",
     "build:web": "webpack --config webpack.config.js",
     "dev:web": "webpack-dev-server"
   },
-  "author": "Weismann",
-  "license": "ISC",
+  "author": {
+    "name": "Weismann",
+    "email": "1563511027@qq.com"
+  },
   "dependencies": {
     "axios": "^0.18.1",
-    "cross-env": "^5.2.0",
     "hls.js": "^0.12.2",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "electron": "^5.0.4"
   },
   "devDependencies": {
     "vue-loader": "^15.7.0",
@@ -28,6 +36,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "cross-env": "^5.2.0",
+    "electron-packager": "^13.0.1"
   }
 }
