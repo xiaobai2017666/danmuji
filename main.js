@@ -2,7 +2,14 @@ const { app, BrowserWindow, ipcMain } =require('electron');
 
 let mainWindow;
 let childWindow;
-let url='./dist/';
+
+let url;
+if(process.env.NODE_ENV === 'development') {
+  url='http://localhost:9999/';
+}
+if(process.env.NODE_ENV === 'production') {
+  url=`file://${__dirname}/dist/`;
+}
 let main=url+'index.html';
 let add=url+'add.html';
 
@@ -14,7 +21,7 @@ function createWindow () {
     resizable: true,  //可变大小
     frame: false,  //菜单与边框显示
     center: true,  //初始位置居中
-    backgroundColor: '#fff',  //背景颜色
+    // transparent: true,
     webPreferences: {
       backgroundThrottling: false, // 当页面被置于非激活窗口的时候是否停止动画和计时器
       nodeIntegration: true,
@@ -35,8 +42,8 @@ function createWindow () {
   childWindow.hide();
 
   // 然后加载 app 的 index.html.
-  mainWindow.loadFile(main);
-  childWindow.loadFile(add);
+  mainWindow.loadURL(main);
+  childWindow.loadURL(add);
 
   mainWindow.on('close', e=> app.quit());
   //主进程和渲染进程通信事件
