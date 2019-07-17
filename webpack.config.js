@@ -10,6 +10,7 @@ module.exports = {
         filename: '[name].bundle.js', //编译后的文件
         path: path.resolve(__dirname, 'dist')
     },
+    mode: 'development',
     module: {
         rules: [
             {

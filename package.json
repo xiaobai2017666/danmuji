@@ -11,7 +11,7 @@
   "private": true,
   "scripts": {
     "dev:electron": "cross-env NODE_ENV=development electron .",
-    "build:electron": "cross-env NODE_ENV=production electron-packager . 弹幕姬 --electron-version 4.0.5 --arch=x64 --platform=win32 --overwrite --icon=favicon.ico --ignore=node_modules --ignore=src --ignore=.gitignore --ignore=package-lock.json --ignore=README.md --ignore=webpack.config.js",
+    "build:electron": "cross-env NODE_ENV=production electron-packager . 弹幕姬 --electron-version 5.0.4 --arch=x64 --platform=win32 --overwrite --icon=favicon.ico --ignore=node_modules --ignore=src --ignore=.gitignore --ignore=package-lock.json --ignore=README.md --ignore=webpack.config.js",
     "build:web": "webpack --config webpack.config.js",
     "dev:web": "webpack-dev-server"
   },
