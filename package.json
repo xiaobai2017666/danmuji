@@ -23,7 +23,7 @@
     "axios": "^0.18.1",
     "hls.js": "^0.12.2",
     "vue": "^2.6.10",
-    "electron": "^5.0.4"
+    "electron": "^9.1.0"
   },
   "devDependencies": {
     "vue-loader": "^15.7.0",
